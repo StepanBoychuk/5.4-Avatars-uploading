@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const logger = require("./../../logger.js");
-const multer = require('multer');
 const getUsersList = require("./../../services/getUsersList.js");
 const getUser = require("./../../services/getUser.js");
 const signup = require("./../../services/signup.js");
@@ -23,7 +22,6 @@ const {getPresignedURL} = require('./../../services/s3.js')
 
 const usersAPI = Router();
 
-const upload = multer();
 
 usersAPI.get("/api/users", async (req, res) => {
   try {
@@ -65,9 +63,13 @@ usersAPI.post("/api/users/signup", createValidator, async (req, res) => {
   }
 });
 
-usersAPI.post("/api/users/avatar", upload.single(), auth, checkFileSize,  async (req, res) => {
+usersAPI.post("/api/users/avatar", auth, checkFileSize,  async (req, res) => {
   try {
-    const presignedURL = await getPresignedURL(req.user.id, req.file.originalname)
+    const {avatarName} = req.body
+    if (!avatarName) {
+      return res.status(400).send("avatarName is required")
+    }
+    const presignedURL = await getPresignedURL(req.user.id, avatarName)
     res.send(presignedURL)
   }catch(error){
     logger.error(error)
