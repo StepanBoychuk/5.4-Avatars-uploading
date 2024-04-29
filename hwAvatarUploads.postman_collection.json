@@ -7,7 +7,30 @@
 	},
 	"item": [
 		{
-			"name": "ec2-3-76-217-179.eu-central-1.compute.amazonaws.com:3000/api/users/signup",
+			"name": "Get users data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "ec2-18-193-103-214.eu-central-1.compute.amazonaws.com:3000/api/users",
+					"host": [
+						"ec2-18-193-103-214",
+						"eu-central-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -26,15 +49,15 @@
 						},
 						{
 							"key": "firstName",
-							"value": "userFirstName",
+							"value": "User First Name",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "ec2-3-76-217-179.eu-central-1.compute.amazonaws.com:3000/api/users/signup",
+					"raw": "ec2-18-193-103-214.eu-central-1.compute.amazonaws.com:3000/api/users/signup",
 					"host": [
-						"ec2-3-76-217-179",
+						"ec2-18-193-103-214",
 						"eu-central-1",
 						"compute",
 						"amazonaws",
@@ -51,7 +74,7 @@
 			"response": []
 		},
 		{
-			"name": "ec2-3-76-217-179.eu-central-1.compute.amazonaws.com:3000/api/users/signin",
+			"name": "Signin",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -71,9 +94,9 @@
 					]
 				},
 				"url": {
-					"raw": "ec2-3-76-217-179.eu-central-1.compute.amazonaws.com:3000/api/users/signin",
+					"raw": "ec2-18-193-103-214.eu-central-1.compute.amazonaws.com:3000/api/users/signin",
 					"host": [
-						"ec2-3-76-217-179",
+						"ec2-18-193-103-214",
 						"eu-central-1",
 						"compute",
 						"amazonaws",
@@ -90,30 +113,30 @@
 			"response": []
 		},
 		{
-			"name": "ec2-3-76-217-179.eu-central-1.compute.amazonaws.com:3000/api/users/avatar",
+			"name": "Upload avatar",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjhmODgxNDUzNmEwNDRmZjUwM2FlMyIsInVzZXJuYW1lIjoidXNlciIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzEzOTYxMTE3LCJleHAiOjE3MTQwNDc1MTd9.kNNPkvDDnt9VCujLjE0fpy0jl2nhMEF7kGnjj3trMv4",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmY3MjQ3MGYyYTMwNmRjOGE3MzAyOSIsInVzZXJuYW1lIjoidXNlciIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE0Mzg1NTI1LCJleHAiOjE3MTQ0NzE5MjV9.mbQQDKdgt1hhX8d9kjQGv2sRhlZcauoT0wMrr6TOJDw",
 						"type": "text"
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
+					"mode": "urlencoded",
+					"urlencoded": [
 						{
-							"key": "",
-							"type": "file",
-							"src": "/home/stepan/Desktop/cat.jpeg"
+							"key": "avatarName",
+							"value": "Random_Turtle.jpg",
+							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "ec2-3-76-217-179.eu-central-1.compute.amazonaws.com:3000/api/users/avatar",
+					"raw": "ec2-18-193-103-214.eu-central-1.compute.amazonaws.com:3000/api/users/avatar",
 					"host": [
-						"ec2-3-76-217-179",
+						"ec2-18-193-103-214",
 						"eu-central-1",
 						"compute",
 						"amazonaws",
@@ -124,29 +147,6 @@
 						"api",
 						"users",
 						"avatar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ec2-3-76-217-179.eu-central-1.compute.amazonaws.com:3000/api/users",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "ec2-3-76-217-179.eu-central-1.compute.amazonaws.com:3000/api/users",
-					"host": [
-						"ec2-3-76-217-179",
-						"eu-central-1",
-						"compute",
-						"amazonaws",
-						"com"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"users"
 					]
 				}
 			},

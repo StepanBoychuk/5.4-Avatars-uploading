@@ -17,7 +17,7 @@ const canChangeUserData = require("./../../middlwares/canChangeUserData.js");
 const vote = require("./../../services/rating.js");
 const lastVoteTime = require("./../../middlwares/lastVoteTime.js");
 const ifUserExist = require("./../../middlwares/ifUserExist.js");
-const checkFileSize = require('./../../middlwares/checkFileSize.js')
+const checkAvatarFile = require('./../../middlwares/checkAvatarFile.js')
 const {getPresignedURL} = require('./../../services/s3.js')
 
 const usersAPI = Router();
@@ -63,12 +63,9 @@ usersAPI.post("/api/users/signup", createValidator, async (req, res) => {
   }
 });
 
-usersAPI.post("/api/users/avatar", auth, checkFileSize,  async (req, res) => {
+usersAPI.post("/api/users/avatar", auth, checkAvatarFile,  async (req, res) => {
   try {
     const {avatarName} = req.body
-    if (!avatarName) {
-      return res.status(400).send("avatarName is required")
-    }
     const presignedURL = await getPresignedURL(req.user.id, avatarName)
     res.send(presignedURL)
   }catch(error){
